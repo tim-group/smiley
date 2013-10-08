@@ -17,7 +17,6 @@ object Smilies extends Controller {
         "2013-10-02" -> "neutral",
         "2013-10-03" -> "neutral",
         "2013-10-04" -> "happy",
-        "2013-10-07" -> "happy",
         "2013-10-08" -> "happy"
         ),
         "Tom W" -> Map(
@@ -25,7 +24,7 @@ object Smilies extends Controller {
         "2013-10-02" -> "neutral",
         "2013-10-03" -> "neutral",
         "2013-10-04" -> "sad",
-        "2013-10-07" -> "neutral"
+        "2013-10-08" -> "neutral"
         ),
         "Sergiusz" -> Map(
         "2013-09-30" -> "happy",

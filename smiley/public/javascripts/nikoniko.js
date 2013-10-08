@@ -8,9 +8,9 @@ $(function() {
   var fromDate = lastMonday();
 
   var ratingSymbol = {
-    "happy": "H",
-    "neutral": "N",
-    "sad": "S"
+    "happy": "<img src='/assets/images/email-smile.png'/>",
+    "neutral": "<img src='/assets/images/email-neutral.png'/>",
+    "sad": "<img src='/assets/images/email-frown.png'/>"
   };
 
 
@@ -21,7 +21,7 @@ $(function() {
         var rating = smilies[dateKey];
         var td = $("<td></td>");
         if (rating) {
-          td.text(ratingSymbol[rating]);
+          td.html(ratingSymbol[rating]);
         }
         row.append(td);
         startDate.addDays(1);
