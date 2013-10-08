@@ -29,7 +29,9 @@ $(function() {
   }
 
 
-  $.get( "/smilies/" + fromDate.toString("yyyy-MM-dd"), function(data) {
+  function populateSentiments() {
+   $.get( "/smilies/" + fromDate.toString("yyyy-MM-dd"), function(data) {
+    $(".nikoniko-individuals").empty();
     $.each(data, function(name, smilies) {
       var row = $("<tr/>"), label = $("<td class='name'>" + name + "</td>"), startDate = new XDate(fromDate);
       row.append(label);
@@ -42,8 +44,10 @@ $(function() {
       $(".nikoniko-individuals").append(row);
 
     });
+   });
+  }
 
-//    alert("We got: " + JSON.stringify(data));
-  });
+  populateSentiments();
+  window.setInterval(populateSentiments, 60000);
 
 });
