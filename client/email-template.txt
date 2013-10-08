@@ -14,15 +14,15 @@ Content-Type: text/html; charset="US-ASCII"
 
         <p>
         <a href="http://smiley/${email}/happy">
-            <img src="cid:happy-face" alt="Happy" width="200px"/>
+            <img src="cid:happy-face"/>
         </a>
 
         <a href="http://smiley/${email}/neutral">
-            <img src="cid:neutral-face" alt="Neutral" width="200px"/>
+            <img src="cid:neutral-face"/>
         </a>
 
         <a href="http://smiley/${email}/sad">
-            <img src="cid:sad-face" alt="Unhappy" width="200px"/>
+            <img src="cid:sad-face"/>
         </a>
         </p>
     </body>
