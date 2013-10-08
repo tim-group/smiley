@@ -3,6 +3,7 @@ package controllers
 import play.api._
 import play.api.mvc._
 import play.api.libs.json.Json.toJson
+import elasticsearch.Repository
 
 
 object Smilies extends Controller {
@@ -39,4 +40,8 @@ object Smilies extends Controller {
     Ok(toJson(data))
   }
 
+  def recordHappiness = Action {
+    Repository.recordHappiness("markus", "2013-10-08", "happy")
+    Ok("Hello")
+  }
 }
