@@ -1,8 +1,13 @@
 $(function() {
 
-  var fromDate = "2013-09-30";
+  function lastMonday() {
+    var lastWeek = new XDate().addWeeks(-1);
+    return new XDate().setWeek(lastWeek.getWeek(), lastWeek.getFullYear());
+  }
 
-  $.get( "/smilies/" + fromDate, function(data) {
+  var fromDate = lastMonday();
+
+  $.get( "/smilies/" + fromDate.toString("yyyy-MM-dd"), function(data) {
     $.each(data, function(name, smilies) {
       var row = $("<tr/>"), label = $("<td>" + name + "</td>");
       row.append(label);

@@ -9,6 +9,7 @@ object Smilies extends Controller {
 
   def from(fromDate: String) = Action {
 
+    println(fromDate)
     val data = Map("Shaf" -> Map(
         "2013-09-30" -> "sad",
         "2013-10-01" -> "happy",
