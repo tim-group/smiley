@@ -4,6 +4,7 @@ import play.api._
 import play.api.mvc._
 import play.api.libs.json.Json.toJson
 import elasticsearch.Repository
+import org.joda.time.LocalDate
 
 
 object Smilies extends Controller {
@@ -39,8 +40,16 @@ object Smilies extends Controller {
     Ok(toJson(data))
   }
 
-  def recordHappiness = Action {
-    Repository.recordHappiness("markus", "2013-10-08", "happy")
-    Ok("Hello")
+  def recordHappiness = Action { request =>
+    val result = for {
+      user <- request.getQueryString("user")
+      date <- request.getQueryString("date")
+      mood <- request.getQueryString("mood")
+    } yield Repository.recordHappiness(user, date, mood)
+    result match {
+      case Some(true) => Ok("Hello")
+      case _ => BadRequest("Went wrong")
+    }
+    
   }
-}
+} 

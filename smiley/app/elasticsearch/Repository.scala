@@ -17,12 +17,12 @@ object Repository {
     Map()
   }
   
-  def recordHappiness(user: String, date: String, level: String) = {
+  def recordHappiness(user: String, date: String, mood: String) : Boolean = {
     val newId = UUID.randomUUID()
     val data = Json.obj(
       "user" -> user,
       "date" -> date,
-      "level" -> level
+      "mood" -> mood
     )
     
     val config = Play.application().configuration()
@@ -30,7 +30,8 @@ object Repository {
     val password = config.getString("es.password")
     val baseUrl = config.getString("es.baseUrl")
     
-    val response = WS.url(baseUrl + newId).withAuth(username, password, Realm.AuthScheme.BASIC).put(data)
-    Await.result(response, Duration(10, scala.concurrent.duration.SECONDS))
+    val futureResponse = WS.url(baseUrl + newId).withAuth(username, password, Realm.AuthScheme.BASIC).put(data)
+    val response = Await.result(futureResponse, Duration(10, scala.concurrent.duration.SECONDS))
+    response.status >= 200 && response.status <= 299
   }
 }
