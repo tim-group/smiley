@@ -1,3 +1,6 @@
 #!/bin/bash
 
-mail -a "Content-type: text/html;" -s "Happy?"  tony.tsui@timgroup.com < email.html
+for rec in `cat recipients.txt`
+do 
+    mail -a "Content-type: text/html;" -s "Happy?"  $rec < email.html
+done
