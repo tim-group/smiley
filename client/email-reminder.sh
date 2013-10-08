@@ -1,8 +1,8 @@
 #!/bin/bash
 
-for rec in `cat recipients.txt`
+DATE=`date +%Y-%m-%d`
+
+for REC in `cat recipients.txt`
 do 
-    cat email-template.txt | sed -e "s/\${email}/$rec/" > email.to.send
-    sendmail -t < email.to.send
-    unlink email.to.send
+    cat email-template.txt | sed -e "s/{{email}}/$REC/" -e "s/{{date}}/$DATE/" | sendmail -t 
 done
