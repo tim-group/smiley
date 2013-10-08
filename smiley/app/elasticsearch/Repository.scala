@@ -15,7 +15,7 @@ class Repository(username: String, password: String, baseUrl: String) {
 
   def getSmileys(since: LocalDate) : Map[String, Map[String, String]] = {
     val data = Json.obj(
-      "query" -> Json.obj("range" -> Json.obj("date" -> Json.obj("gte" -> "2013-10-07", "lte" -> "2013-10-10")))
+      "query" -> Json.obj("range" -> Json.obj("date" -> Json.obj("gte" -> since.toString, "lte" -> LocalDate.now().toString)))
     )
     val futureResponse = WS.url(baseUrl + "_search").withAuth(username, password, Realm.AuthScheme.BASIC).post(data)
     val response = Await.result(futureResponse, Duration(10, scala.concurrent.duration.SECONDS))
