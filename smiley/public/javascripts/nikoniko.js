@@ -19,7 +19,7 @@ $(function() {
      for(i = 0; i < 5; i++) {
         var dateKey = startDate.toString("yyyy-MM-dd");
         var rating = smilies[dateKey];
-        var td = $("<td></td>");
+        var td = $("<td class='sentiment'></td>");
         if (rating) {
           td.html(ratingSymbol[rating]);
         }
@@ -36,7 +36,7 @@ $(function() {
 
       renderWeek(startDate, smilies, row);
       startDate.addDays(7);
-      row.append("<td/>");
+      row.append("<td class='weekend'/>");
       renderWeek(startDate, smilies, row);
 
       $(".nikoniko-individuals").append(row);

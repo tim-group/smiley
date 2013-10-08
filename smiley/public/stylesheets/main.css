@@ -1,0 +1,17 @@
+.nikoniko-chart {
+    border-collapse: collapse;
+    border: 0px;
+}
+.nikoniko-individuals {
+
+}
+.sentiment {
+    width: 149px;
+    background-color: black;
+    border-color: black;
+    padding: 5px;
+}
+
+.weekend {
+    width: 50px;
+}
