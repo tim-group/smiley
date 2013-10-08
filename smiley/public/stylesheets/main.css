@@ -1,3 +1,7 @@
+body {
+    background-color: DarkBlue;
+}
+
 .nikoniko-chart {
     border-collapse: collapse;
     border: 0px;
@@ -7,8 +11,7 @@
 }
 .sentiment {
     width: 149px;
-    background-color: black;
-    border-color: black;
+    background-color: LightSkyBlue;
     padding: 5px;
 }
 
@@ -18,8 +21,11 @@
 
 .week-title {
     font-size: 3em;
+    color: #CCC;
 }
 
 .name {
     font-size: 2em;
+    color: #CCC;
+    padding: 15px;
 }
