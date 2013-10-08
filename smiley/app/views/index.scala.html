@@ -2,13 +2,20 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+       <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")" />
     </head>
 
     <body>
-        <div class="approot">
-            <!-- contents will be replaced with backbone App view -->
-            <p>There's nothing going on here.</p>
-        </div>
+        <table class="nikoniko-chart">
+          <th>
+            <td/>
+            <td colspan="5">Last Week</td>
+            <td/>
+            <td colspan="5">This Week</td>
+            <td/>
+          </th>
+          <tbody class="nikoniko-individuals"/>
+        </table>
 
         <script src="@routes.Assets.at("javascripts/jquery-1.10.2.min.js")"></script>
         <script src="@routes.Assets.at("javascripts/xdate.dev.js")"></script>
