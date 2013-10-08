@@ -7,7 +7,7 @@ import play.api.libs.json.Json.toJson
 
 object Smilies extends Controller {
 
-  def lastTwoWeeks = Action {
+  def from(fromDate: String) = Action {
 
     val data = Map("Shaf" -> Map(
         "2013-09-30" -> "sad",

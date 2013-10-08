@@ -9,4 +9,4 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Niko Niko chart for the last 2 weeks
-GET /smilies                       controllers.Smilies.lastTwoWeeks
+GET /smilies/:fromDate              controllers.Smilies.from(fromDate)
