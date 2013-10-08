@@ -31,7 +31,7 @@ $(function() {
 
   $.get( "/smilies/" + fromDate.toString("yyyy-MM-dd"), function(data) {
     $.each(data, function(name, smilies) {
-      var row = $("<tr/>"), label = $("<td>" + name + "</td>"), startDate = new XDate(fromDate);
+      var row = $("<tr/>"), label = $("<td class='name'>" + name + "</td>"), startDate = new XDate(fromDate);
       row.append(label);
 
       renderWeek(startDate, smilies, row);

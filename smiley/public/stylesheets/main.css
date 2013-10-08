@@ -15,3 +15,11 @@
 .weekend {
     width: 50px;
 }
+
+.week-title {
+    font-size: 3em;
+}
+
+.name {
+    font-size: 2em;
+}
