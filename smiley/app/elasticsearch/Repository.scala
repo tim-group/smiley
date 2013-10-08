@@ -21,9 +21,9 @@ class Repository(username: String, password: String, baseUrl: String) {
     val response = Await.result(futureResponse, Duration(10, scala.concurrent.duration.SECONDS))
     val json = Json.parse(response.body)
     val hits = (json \ "hits" \ "hits").as[Seq[JsValue]]
-    val sentiments = hits.map { jsonItem => Map("user" -> (jsonItem \ "_source" \ "user").toString, 
-                                                "date" -> (jsonItem \ "_source" \ "date").toString,
-                                                "mood" -> (jsonItem \ "_source" \ "mood").toString) }
+    val sentiments = hits.map { jsonItem => Map("user" -> (jsonItem \ "_source" \ "user").as[String], 
+                                                "date" -> (jsonItem \ "_source" \ "date").as[String],
+                                                "mood" -> (jsonItem \ "_source" \ "mood").as[String]) }
     
     sentiments.groupBy(item => item("user"))
       .mapValues(dateGroup => dateGroup.groupBy(item => item("date"))
