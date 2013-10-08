@@ -1,0 +1,52 @@
+From: ttsui@tonylinux.youdevise.com
+To: tony.tsui@timgroup.com
+Subject: A simple example
+Mime-Version: 1.0
+Content-Type: multipart/related; boundary="boundary-example"; type="text/html"
+
+--boundary-example
+Content-Type: text/html; charset="US-ASCII"
+
+<html>
+    <body>
+        Hi ${email}
+        How are you feeling today?
+        <p>
+        <a href="http://smiley/${email}/happy">
+            <img src="cid:happy-face" alt="Happy" width="200px"/>
+        </a>
+
+        <a href="http://smiley/${email}/neutral">
+            <img src="cid:neutral-face" alt="Neutral" width="200px"/>
+        </a>
+
+        <a href="http://smiley/${email}/sad">
+            <img src="cid:sad-face" alt="Unhappy" width="200px"/>
+        </a>
+        </p>
+    </body>
+</html>
+
+<IMG SRC="cid:foo4atfoo1atbar.net" ALT="IETF logo">
+
+--boundary-example
+Content-Location: CID:somethingatelse ; this header is disregarded
+Content-ID: <happy-face>
+Content-Type: IMAGE/JPEG
+Content-Transfer-Encoding: BASE64
+
+--boundary-example--
+
+Content-Location: CID:somethingatelse ; this header is disregarded
+Content-ID: <neutral-face>
+Content-Type: IMAGE/JPEG
+Content-Transfer-Encoding: BASE64
+
+--boundary-example--
+
+Content-Location: CID:somethingatelse ; this header is disregarded
+Content-ID: <sad-face>
+Content-Type: IMAGE/JPEG
+Content-Transfer-Encoding: BASE64
+
+--boundary-example--
