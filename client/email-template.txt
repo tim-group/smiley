@@ -9,7 +9,6 @@ Content-Type: text/html; charset="US-ASCII"
 
 <html>
     <body>
-        Hi,
         <p>How are you feeling today?</p>
 
         <p>
