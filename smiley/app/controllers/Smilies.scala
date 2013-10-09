@@ -10,34 +10,7 @@ import play.Play
 object Smilies extends Controller {
 
   def from(fromDate: String) = Action {
-    println(fromDate)
     val data = repository().getSmileys(LocalDate.parse(fromDate))
-    println(data)
-//    val data = Map("Shaf" -> Map(
-//        "2013-09-30" -> "sad",
-//        "2013-10-01" -> "happy",
-//        "2013-10-02" -> "neutral",
-//        "2013-10-03" -> "neutral",
-//        "2013-10-04" -> "happy",
-//        "2013-10-08" -> "happy"
-//        ),
-//        "Tom W" -> Map(
-//        "2013-10-01" -> "happy",
-//        "2013-10-02" -> "neutral",
-//        "2013-10-03" -> "neutral",
-//        "2013-10-04" -> "sad",
-//        "2013-10-08" -> "neutral"
-//        ),
-//        "Sergiusz" -> Map(
-//        "2013-09-30" -> "happy",
-//        "2013-10-01" -> "happy",
-//        "2013-10-02" -> "neutral",
-//        "2013-10-03" -> "neutral",
-//        "2013-10-04" -> "happy",
-//        "2013-10-08" -> "neutral"
-//        )
-//        )
-
     Ok(toJson(data))
   }
 
@@ -47,9 +20,10 @@ object Smilies extends Controller {
       date <- request.getQueryString("date")
       mood <- request.getQueryString("mood")
     } yield repository().recordHappiness(user, date, mood)
+    
     result match {
-      case Some(true) => Ok("Hello")
-      case _ => BadRequest("Went wrong")
+      case Some(true) => Ok("Sentiment has been recorded")
+      case _ => BadRequest("Could not record sentiment")
     }
   }
   
