@@ -15,6 +15,9 @@ $(function() {
 
 
   function deriveReadableName(emailAddress) {
+    if (emailAddress.indexOf("@") === -1) {
+      return emailAddress;
+    }
     var firstName = emailAddress.slice(0, emailAddress.indexOf("."));
     var lastName = emailAddress.slice(firstName.length + 1, emailAddress.indexOf("@"));
     return firstName.slice(0, 1).toUpperCase() + firstName.substr(1) + " " + lastName.slice(0, 1).toUpperCase();
