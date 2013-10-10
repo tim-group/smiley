@@ -12,15 +12,15 @@ Content-Type: text/html; charset="US-ASCII"
         <p>How are you feeling today?</p>
 
         <p>
-        <a href="http://smiley.timgroup.com/sentiment?user={{email}}&mood=happy&date={{date}}">
+        <a href="http://ldn-dev-twestmacott:9000/smiley/?user={{email}}&mood=happy&date={{date}}">
             <img src="cid:happy-face"/>
         </a>
 
-        <a href="http://smiley.timgroup.com/sentiment?user={{email}}&mood=neutral&date={{date}}">
+        <a href="http://ldn-dev-twestmacott:9000/smiley/?user={{email}}&mood=neutral&date={{date}}">
             <img src="cid:neutral-face"/>
         </a>
 
-        <a href="http://smiley.timgroup.com/sentiment?user={{email}}&mood=sad&date={{date}}">
+        <a href="http://ldn-dev-twestmacott:9000/smiley/?user={{email}}&mood=sad&date={{date}}">
             <img src="cid:sad-face"/>
         </a>
         </p>
