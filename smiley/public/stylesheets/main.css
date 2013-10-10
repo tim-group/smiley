@@ -1,5 +1,5 @@
 body {
-    background-color: DarkBlue;
+    background-color: #003;
 }
 
 .nikoniko-chart {
@@ -11,7 +11,7 @@ body {
 }
 .sentiment {
     width: 149px;
-    background-color: LightSkyBlue;
+    background-color: #ACF;
     padding: 5px;
 }
 
@@ -20,12 +20,12 @@ body {
 }
 
 .week-title {
-    font-size: 3em;
+    font-size: 4em;
     color: #CCC;
 }
 
 .name {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #CCC;
     padding: 15px;
 }
