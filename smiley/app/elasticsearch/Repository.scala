@@ -2,9 +2,7 @@ package elasticsearch
 
 import org.joda.time.LocalDate
 import play.api.libs.ws._
-import java.util.UUID
 import play.api.libs.json.Json
-import scala.concurrent.Future
 import scala.concurrent.duration.Duration
 import scala.concurrent.Await
 import com.ning.http.client.Realm
