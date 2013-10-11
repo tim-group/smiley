@@ -6,20 +6,31 @@
     </head>
 
     <body>
-        <table class="nikoniko-chart">
-          <tbody class="headings">
-              <tr>
-                <th/>
-                <th colspan="5" class="week-title">Last Week</th>
-                <th/>
-                <th colspan="5" class="week-title">This Week</th>
-                <th/>
-              </tr>
-          </tbody>
-          <tbody class="nikoniko-individuals"/>
-        </table>
-
+        <div class="container">
+          <div class="sentiment-container">
+            <table class="nikoniko-chart">
+                <tbody class="headings">
+                <tr>
+                    <th/>
+                    <th colspan="5" class="week-title">Last Week</th>
+                    <th/>
+                    <th colspan="5" class="week-title">This Week</th>
+                    <th/>
+                </tr>
+                </tbody>
+                <tbody class="nikoniko-individuals">
+                </tbody>
+            </table>
+          </div>
+          <div class="sentiment-thermometer-container">
+            <div class="sentiment-thermometer">
+              <div class="happy-count bar-container"><div class="happy-bar bar"></div></div>
+              <div class="sad-count bar-container"><div class="sad-bar bar"></div></div>
+            </div>
+          </div>
+        </div>
         <script src="@routes.Assets.at("javascripts/jquery-1.10.2.min.js")"></script>
+        <script src="@routes.Assets.at("javascripts/underscore-min.js")"></script>
         <script src="@routes.Assets.at("javascripts/xdate.dev.js")"></script>
         <script src="@routes.Assets.at("javascripts/nikoniko.js")"></script>
     </body>

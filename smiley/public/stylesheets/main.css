@@ -2,9 +2,27 @@ body {
     background-color: #003;
 }
 
+.container {
+    overflow: hidden;
+    height: auto;
+}
+
+.sentiment-container {
+    float: left;
+}
+
+.sentiment-thermometer-container {
+    float: left;
+    margin-top: 4.7em;
+    position: relative;
+
+}
+
+
 .nikoniko-chart {
     border-collapse: collapse;
-    border: 0px;
+    border: 0;
+
 }
 .nikoniko-individuals {
 
@@ -12,7 +30,7 @@ body {
 .sentiment {
     width: 149px;
     background-color: #ACF;
-    padding: 5px;
+    padding: 0.5em;
 }
 
 .weekend {
@@ -27,5 +45,43 @@ body {
 .name {
     font-size: 2.5em;
     color: #CCC;
-    padding: 15px;
+    padding: 0.5em;
 }
+
+
+.sentiment-thermometer {
+    background-color: #CCC;
+    border:5px solid black;
+    padding: 0.4em;
+    height: 15em;
+    border-radius: 1.2em;
+}
+
+
+.bar-container {
+    position: relative;
+    width: 50px;
+    height: 50%;
+    margin: 0;
+}
+
+.bar {
+    position: absolute;
+    width: 100%;
+}
+
+.happy-bar {
+    bottom: 0px;
+    height: 0%;
+    background-color: #66b32d;
+    border-radius: 0.6em 0.6em 0 0;
+
+}
+
+.sad-bar {
+    top: 0px;
+    height: 0%;
+    background-color: #e61a2c;
+    border-radius: 0 0 0.6em 0.6em;
+}
+
