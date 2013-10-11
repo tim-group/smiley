@@ -13,6 +13,7 @@ class Repository(username: String, password: String, baseUrl: String) {
 
   def getSmileys(since: LocalDate) : Map[String, Map[String, String]] = {
     val data = Json.obj(
+      "size" -> 1000,
       "query" -> Json.obj("range" -> Json.obj("date" -> Json.obj("gte" -> since.toString, "lte" -> LocalDate.now().toString)))
     )
     val futureResponse = WS.url(baseUrl + "_search").withAuth(username, password, Realm.AuthScheme.BASIC).post(data)
