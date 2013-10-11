@@ -29,7 +29,7 @@ $(function() {
         var dateKey = startDate.toString("yyyy-MM-dd");
         var rating = smilies[dateKey];
         var td = $("<td class='sentiment'></td>");
-        if (rating) {
+        if (rating && ratingSymbol[rating]) {
           td.html(ratingSymbol[rating]);
         }
         row.append(td);

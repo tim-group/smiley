@@ -14,19 +14,26 @@ object Smilies extends Controller {
     Ok(toJson(data))
   }
 
+
+  def validMoods = List("happy", "neutral", "sad")
+
+  def valid(mood: Option[String]) : Option[String] = {
+    if (validMoods.contains(mood.getOrElse(""))) mood else None
+  }
+
   def recordHappiness = Action { request =>
     val result = for {
       user <- request.getQueryString("user")
       date <- request.getQueryString("date")
-      mood <- request.getQueryString("mood")
+      mood <- valid(request.getQueryString("mood"))
     } yield repository().recordHappiness(user, date, mood)
-    
+
     result match {
       case Some(true) => Ok("Sentiment has been recorded")
       case _ => BadRequest("Could not record sentiment")
     }
   }
-  
+
   def repository() : Repository = {
     val config = Play.application().configuration()
     val username = config.getString("es.username")
