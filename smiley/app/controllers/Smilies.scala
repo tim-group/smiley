@@ -41,4 +41,16 @@ object Smilies extends Controller {
     val baseUrl = config.getString("es.baseUrl")
     new Repository(username, password, baseUrl)
   }
+
+  def say = Action { request =>
+    val result = for {
+      users <- request.queryString.get("user")
+    } yield users
+    println(result)
+    result match {
+      case Some(users) => Ok("hello " + users.mkString(","))
+      case _ => BadRequest("Error")
+    }
+    
+  }
 }

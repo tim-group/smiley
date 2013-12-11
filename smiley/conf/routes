@@ -11,3 +11,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # Niko Niko chart for the last 2 weeks
 GET /smilies/:fromDate              controllers.Smilies.from(fromDate)
 GET /smiley/                        controllers.Smilies.recordHappiness
+GET /greeter           				controllers.Smilies.say
