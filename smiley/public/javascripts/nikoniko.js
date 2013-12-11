@@ -32,14 +32,16 @@ $(function() {
       });
   }
 
-  function renderOnePersonsSentiment(data, weeks) {
+  function renderEveryonesSentiment(data, weeks) {
     $(".nikoniko-individuals").empty();
-    $.each(data, function(name, smilies) {
+    var names = Object.keys(data);
+    names.sort();
+    $.each(names, function(index, name) {
       var row = $("<tr/>"), label = $("<td class='name'>" + deriveReadableName(name) + "</td>");
       row.append(label);
 
         _.each(weeks, function(week) {
-            renderWeek(week, smilies, row);
+            renderWeek(week, data[name], row);
             row.append("<td class='weekend'/>");
         });
 
@@ -102,7 +104,7 @@ $(function() {
     var daysInWeeks = daysInWeeksFrom(lastMonday(), 2);
 
     $.get( "/smilies/" + daysInWeeks[0][0], function(data) {
-        renderOnePersonsSentiment(data, daysInWeeks);
+        renderEveryonesSentiment(data, daysInWeeks);
         renderTotalSentiment(data, _.flatten(daysInWeeks));
     });
   }
