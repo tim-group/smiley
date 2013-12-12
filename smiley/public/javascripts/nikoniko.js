@@ -45,7 +45,6 @@ $(function() {
             row.append("<td class='weekend'/>");
         });
 
-
       $(".nikoniko-individuals").append(row);
 
     });
@@ -101,9 +100,10 @@ $(function() {
   }
 
   function populateSentiments() {
+    // alert(location.search);
     var daysInWeeks = daysInWeeksFrom(lastMonday(), 2);
 
-    $.get( "/smilies/" + daysInWeeks[0][0], function(data) {
+    $.get( "/smilies/" + daysInWeeks[0][0] + location.search, function(data) {
         renderEveryonesSentiment(data, daysInWeeks);
         renderTotalSentiment(data, _.flatten(daysInWeeks));
     });

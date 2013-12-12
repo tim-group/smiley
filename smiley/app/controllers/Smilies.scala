@@ -9,11 +9,20 @@ import play.Play
 
 object Smilies extends Controller {
 
-  def from(fromDate: String) = Action {
-    val data = repository().getSmileys(LocalDate.parse(fromDate))
-    Ok(toJson(data))
-  }
+  // def from(fromDate: String) = Action {
+  //   val data = repository().getSmileys(LocalDate.parse(fromDate))
+  //   Ok(toJson(data))
+  // }
 
+  def forUsers(fromDate: String) = Action { request =>
+    val result = for {
+      users <- request.queryString.get("user")
+    } yield users
+    result match {
+      case Some(users) => Ok(toJson(repository().getSmileysFor(users.toList, LocalDate.parse(fromDate))))
+      case _ =>  Ok(toJson(repository().getSmileys(LocalDate.parse(fromDate))))
+    }
+  }
 
   def validMoods = List("happy", "neutral", "sad")
 
@@ -41,16 +50,5 @@ object Smilies extends Controller {
     val baseUrl = config.getString("es.baseUrl")
     new Repository(username, password, baseUrl)
   }
-
-  def say = Action { request =>
-    val result = for {
-      users <- request.queryString.get("user")
-    } yield users
-    println(result)
-    result match {
-      case Some(users) => Ok("hello " + users.mkString(","))
-      case _ => BadRequest("Error")
-    }
-    
-  }
 }
+

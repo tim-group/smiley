@@ -29,6 +29,10 @@ class Repository(username: String, password: String, baseUrl: String) {
                    .mapValues(userGroups => userGroups.head("mood")))
   }
 
+  def getSmileysFor(users: List[String], since: LocalDate) : Map[String, Map[String, String]] = {
+    getSmileys(since).filter(nameAndSentiment => users.contains(nameAndSentiment._1))
+  }
+
   def recordHappiness(user: String, date: String, mood: String) : Boolean = {
     val newId = user + "-" + date
     val data = Json.obj(
