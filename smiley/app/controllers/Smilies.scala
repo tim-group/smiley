@@ -9,11 +9,6 @@ import play.Play
 
 object Smilies extends Controller {
 
-  // def from(fromDate: String) = Action {
-  //   val data = repository().getSmileys(LocalDate.parse(fromDate))
-  //   Ok(toJson(data))
-  // }
-
   def forUsers(fromDate: String) = Action { request =>
     val result = for {
       users <- request.queryString.get("user")
@@ -24,7 +19,31 @@ object Smilies extends Controller {
     }
   }
 
-  def validMoods = List("happy", "neutral", "sad")
+  def weeklyAverages(fromDate: String) = Action { request =>
+    val result = for {
+      users <- request.queryString.get("user")
+    } yield users
+    result match {
+      case Some(users) => Ok(toJson(convertToAverages(repository().getSmileysFor(users.toList, LocalDate.parse(fromDate)))))
+      case _ =>  Ok(toJson(convertToAverages(repository().getSmileys(LocalDate.parse(fromDate)))))
+    }
+  }
+
+   def convertToAverages(sentimentData: Map[String, Map[String, String]]) :  Map[String, Map[String, String]] = {
+       sentimentData.mapValues(averageOnePersonsSentiment(_))
+   }
+   
+   def averageOnePersonsSentiment(onePersonsData: Map[String, String]): Map[String, String] = {
+     val byWeek: Map[String, Map[String, String]] = onePersonsData.groupBy(dayAndSentiment => LocalDate.parse(dayAndSentiment._1).getWeekOfWeekyear.toString)
+     byWeek.filter(_._2.size > 2)
+     	   .mapValues(sentiments => averageOf(sentiments))
+   }
+   
+   def averageOf(sentiments: Map[String, String]): String = {
+     (sentiments.map(dayAndSentiment => validMoods.indexOf(dayAndSentiment._2) - 1).foldLeft(0)(_ + _) / sentiments.size.toFloat).toString
+   } 
+        
+  def validMoods = List( "sad", "neutral", "happy" )
 
   def valid(mood: Option[String]) : Option[String] = {
     if (validMoods.contains(mood.getOrElse(""))) mood else None

@@ -100,7 +100,6 @@ $(function() {
   }
 
   function populateSentiments() {
-    // alert(location.search);
     var daysInWeeks = daysInWeeksFrom(lastMonday(), 2);
 
     $.get( "/smilies/" + daysInWeeks[0][0] + location.search, function(data) {
