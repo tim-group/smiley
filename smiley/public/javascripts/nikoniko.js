@@ -2,7 +2,7 @@ $(function() {
 
   function lastMonday() {
     var lastWeek = new XDate().addWeeks(-1);
-    return new XDate().setWeek(lastWeek.getWeek(), lastWeek.getFullYear());
+    return lastWeek.addDays(1 - lastWeek.getDay());
   }
 
   var ratingSymbol = {
