@@ -63,10 +63,9 @@ object Smilies extends Controller {
   }
 
   def repository() : Repository = {
-    val config = Play.application().configuration()
-    val username = config.getString("es.username")
-    val password = config.getString("es.password")
-    val baseUrl = config.getString("es.baseUrl")
+    val username = System.getProperty("es.username")
+    val password = System.getProperty("es.password")
+    val baseUrl = System.getProperty("es.baseUrl")
     new Repository(username, password, baseUrl)
   }
 }
