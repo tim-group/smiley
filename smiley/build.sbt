@@ -1,6 +1,6 @@
 name := "smiley"
 
-version := "1.0-SNAPSHOT"
+version := "1.0.%s".format(Option(System.getenv("BUILD_NUMBER")).getOrElse("0-SNAPSHOT"))
 
 val playTuckerVersion = "2.2.14"
 
