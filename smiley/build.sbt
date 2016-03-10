@@ -27,6 +27,7 @@ UploadToProductstore.uploadToProductstoreSettings
 
 // sbt-assembly config per Typesafe support
 mainClass in assembly := Some("com.timgroup.playlauncher.Launcher")
+assemblyJarName := "smiley-" + version.value + ".jar"
 
 // fullClasspath in assembly += Attributed.blank(playPackageAssets.value),
 
