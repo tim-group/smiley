@@ -8,7 +8,7 @@ libraryDependencies ++= Seq(
   cache
 )
 
-com.timgroup.sbtjavaversion.SbtJavaVersionKeys.javaVersion := "1.8"
+com.timgroup.sbtjavaversion.SbtJavaVersionKeys.javaVersion := "1.6"
 
 play.Project.playScalaSettings
 
