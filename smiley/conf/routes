@@ -12,3 +12,5 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET /smilies/:fromDate              controllers.Smilies.forUsers(fromDate)
 GET /averages/:fromDate             controllers.Smilies.weeklyAverages(fromDate)
 GET /smiley/                        controllers.Smilies.recordHappiness
+
+GET /info/:page           com.timgroup.play_tucker.Info.render(page)

@@ -2,13 +2,24 @@ name := "smiley"
 
 version := "1.0-SNAPSHOT"
 
+val playTuckerVersion = "2.2.14"
+
+val tucker = Seq(
+  "com.timgroup"               % "Tucker"                % "1.0.415"
+)
+
+val tuckerPlay = Seq(
+  "com.timgroup"               %% "play-jvmmetrics-tucker" % playTuckerVersion,
+  "com.timgroup"               %% "play-tucker"       % playTuckerVersion)
+
 libraryDependencies ++= Seq(
   jdbc,
   anorm,
   cache
-)
+) ++ tucker ++ tuckerPlay
 
 com.timgroup.sbtjavaversion.SbtJavaVersionKeys.javaVersion := "1.6"
+scalaVersion := "2.10.3"
 
 play.Project.playScalaSettings
 
