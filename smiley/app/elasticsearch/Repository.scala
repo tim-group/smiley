@@ -1,12 +1,13 @@
 package elasticsearch
 
 import org.joda.time.LocalDate
-import play.api.Play.current
-import play.api.libs.json.{JsValue, Json}
 import play.api.libs.ws._
-
-import scala.concurrent.Await
+import play.api.libs.json.Json
 import scala.concurrent.duration.Duration
+import scala.concurrent.Await
+import com.ning.http.client.Realm
+import play.api.libs.json.JsValue
+
 
 class Repository(username: String, password: String, baseUrl: String) {
 
@@ -15,7 +16,7 @@ class Repository(username: String, password: String, baseUrl: String) {
       "size" -> 1000,
       "query" -> Json.obj("range" -> Json.obj("date" -> Json.obj("gte" -> since.toString, "lte" -> LocalDate.now().toString)))
     )
-    val futureResponse = WS.url(baseUrl + "_search").withAuth(username, password, WSAuthScheme.BASIC).post(data)
+    val futureResponse = WS.url(baseUrl + "_search").withAuth(username, password, Realm.AuthScheme.BASIC).post(data)
     val response = Await.result(futureResponse, Duration(10, scala.concurrent.duration.SECONDS))
     val json = Json.parse(response.body)
     val hits = (json \ "hits" \ "hits").as[Seq[JsValue]]
@@ -40,7 +41,7 @@ class Repository(username: String, password: String, baseUrl: String) {
       "mood" -> mood
     )
 
-    val futureResponse = WS.url(baseUrl + newId).withAuth(username, password, WSAuthScheme.BASIC).put(data)
+    val futureResponse = WS.url(baseUrl + newId).withAuth(username, password, Realm.AuthScheme.BASIC).put(data)
     val response = Await.result(futureResponse, Duration(10, scala.concurrent.duration.SECONDS))
     response.status >= 200 && response.status <= 299
   }
