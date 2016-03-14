@@ -2,26 +2,25 @@ name := "smiley"
 
 version := "1.0.%s".format(Option(System.getenv("BUILD_NUMBER")).getOrElse("0-SNAPSHOT"))
 
-val playTuckerVersion = "2.2.14"
+val playTuckerVersion = "2.3.43"
 
 val tucker = Seq(
   "com.timgroup"               % "Tucker"                % "1.0.415"
 )
 
 val tuckerPlay = Seq(
-  "com.timgroup"               %% "play-jvmmetrics-tucker" % playTuckerVersion,
-  "com.timgroup"               %% "play-tucker"       % playTuckerVersion)
+  "com.timgroup"               %% "playtuckerjvmmetrics" % playTuckerVersion,
+  "com.timgroup"               %% "playtuckercore"       % playTuckerVersion)
 
 libraryDependencies ++= Seq(
-  jdbc,
   anorm,
-  cache
+  cache,
+  jdbc,
+  ws
 ) ++ tucker ++ tuckerPlay
 
 com.timgroup.sbtjavaversion.SbtJavaVersionKeys.javaVersion := "1.6"
-scalaVersion := "2.10.3"
-
-play.Project.playScalaSettings
+scalaVersion := "2.11.8"
 
 UploadToProductstore.uploadToProductstoreSettings
 
@@ -38,7 +37,6 @@ libraryDependencies ~= { _ map {
 }}
 
 
-// split out the settings which apply to non-play projects
 excludeDependencies += "commons-logging"
 
 assemblyMergeStrategy in assembly := {
@@ -49,3 +47,5 @@ assemblyMergeStrategy in assembly := {
 }
 
 com.timgroup.sbtplaylauncher.SbtPlayLauncher.playLauncherSettings
+
+enablePlugins(PlayScala)
