@@ -11,15 +11,15 @@ Content-Type: text/html; charset="US-ASCII"
     <body>
         <p>How are you feeling today?</p>
         <p>
-        <a href="http://office-smileyapp-001.mgmt.lon.net.local:8000/smiley/?user={{email}}&mood=happy&date={{date}}">
+        <a href="http://smiley.youdevise.com:8000/smiley/?user={{email}}&mood=happy&date={{date}}">
             <img src="cid:happy-face"/>
         </a>
 
-        <a href="http://office-smileyapp-001.mgmt.lon.net.local:8000/smiley/?user={{email}}&mood=neutral&date={{date}}">
+        <a href="http://smiley.youdevise.com:8000/smiley/?user={{email}}&mood=neutral&date={{date}}">
             <img src="cid:neutral-face"/>
         </a>
 
-        <a href="http://office-smileyapp-001.mgmt.lon.net.local:8000/smiley/?user={{email}}&mood=sad&date={{date}}">
+        <a href="http://smiley.youdevise.com:8000/smiley/?user={{email}}&mood=sad&date={{date}}">
             <img src="cid:sad-face"/>
         </a>
         </p>
